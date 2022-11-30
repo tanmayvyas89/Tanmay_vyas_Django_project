@@ -1,0 +1,87 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!-- Cart Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-8 table-responsive mb-5">
+            <table class="table table-light table-borderless table-hover text-center mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Discount %</th>
+                        <th>Image</th>
+                        <th>Update</th>
+                        <th>Seller Name</th>
+                        <th>Discounted Price</th>
+
+
+                    </tr>
+                </thead>
+                {% for single_product in plist %}
+                <tr>
+                    <td>{{single_product.product.product_name}}</td>
+                    <td>{{single_product.product.product_description}}</td>
+                    <td>{{single_product.product.price}}</td>
+                    <td>{{single_product.quantity}}</td>
+                    <td>{{single_product.product.discount}}</td>
+                    <td><img src="{{single_product.product.image.url}}" alt="Image of {{single_product.product.product_name}}" height="60"
+                            width="60"></td>
+                    <td>
+                        
+                        <a href="{% url 'delcart' single_product.id  %}">Delete</a>
+                    </td>
+                    <td>{{single_product.product.first_name}}</td>
+                    <td>{{single_product.product.discounted_price}}</td>
+
+
+
+                </tr>
+                {% endfor %}        
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-3" style="margin-left: 100px;">
+            <form class="mb-30" action="">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary">Apply Coupon</button>
+                    </div>
+                </div>
+            </form>
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart
+                    Summary</span></h5>
+            <div class="bg-light p-30 mb-5">
+                <div class="border-bottom pb-2">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h6>Price</h6>
+                        <h6>₹ {{actual_price}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Amout to Pay</h6>
+                        <h6 class="font-weight-medium">₹ {{Total}}</h6>
+                    </div><br>
+                    <div class="d-flex justify-content-between mb-3">
+                        <h6>YOU SAVED!!!</h6>
+                        <h6>₹{{saved_money}}</h6>
+                    </div>
+
+                </div>
+                <div class="pt-2">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5>Total</h5>
+                        <h5>₹ {{Total}}</h5>
+                    </div>
+
+                    <a href="{% url 'checkout' %}"><button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart End -->
+{% endblock %}

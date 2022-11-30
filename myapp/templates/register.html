@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Registration</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet"
+		href="{% static 'staticc/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css'%}">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="{% static 'staticc/css/style.css'%}">
+</head>
+
+<body>
+
+	<div class="wrapper" style="background-image: url('images/bg-registration-form-1.jpg');">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="{% static 'staticc/images/image1.jpg'%}" alt="">
+			</div>
+			<p>{{msg}}</p>
+			<form action="{% url 'register' %}" method="post">
+				{% csrf_token %}
+				<h3>Registration Form</h3>
+				<div class="form-group" >
+					<input type="text" name="first_name" placeholder="First Name" class="form-control" >
+					<input type="text" name="last_name" placeholder="Last Name" class="form-control">
+				</div>
+				<div class="form-wrapper">
+					<input type="text" name="email" placeholder="Email Address" class="form-control">
+					<i class="zmdi zmdi-email"></i>
+				</div>
+				<div class="form-wrapper">
+					<input type="text" name="mobile_number" placeholder="Mobile Number" class="form-control">
+					<i><img src="https://img.icons8.com/ios-filled/12/000000/apple-phone.png" /></i>
+				</div>
+				<div class="form-wrapper">
+					<input type="password" name="password" placeholder="Password" class="form-control" >
+					<i class="zmdi zmdi-lock"></i>
+				</div>
+				<div class="form-wrapper">
+					<input type="password" name="re_password" placeholder="Confirm Password" class="form-control">
+					<i class="zmdi zmdi-lock"></i>
+				</div>
+				<button type="submit" id="reg">Register
+					<i class="zmdi zmdi-arrow-right"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>

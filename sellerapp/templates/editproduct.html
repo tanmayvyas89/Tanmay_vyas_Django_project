@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <style>
+        .col-md-6 {
+            text-align: center;
+            line-height: 50px;
+        }
+
+        body {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="control-label">Product Name</label>
+                <input name="name" type="text" class="form-control" value="{{pobj.product_name}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <input name="des" type="text" class="form-control" value="{{pobj.product_description}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Price</label>
+                <input name="price" type="text" class="form-control" value="{{pobj.price}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Quantity</label>
+                <input name="quantity" type="text" class="form-control" value="{{pobj.quantity}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Discount</label>
+                <input name="discount" type="text" class="form-control" value="{{pobj.discount}}">
+            </div>
+            <div class="form-group">
+                <label class="control-label">{{pobj.product_name}}</label>
+                <!-- <input name="pic" type="file" class="form-control"> -->
+                <img src="{{pobj.image.url}}" alt="Image of {{pobj.product_name}}" height="60"
+                        width="60">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info" value="Submit">
+                    </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

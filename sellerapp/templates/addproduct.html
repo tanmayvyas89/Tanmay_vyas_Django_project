@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        .maindiv{
+            background-color: rgb(153, 132, 40);
+            text-align: center;
+            border: 1px;
+            line-height: 65px;
+        }
+
+    </style>
+
+<body>
+
+    <form class="form-horizontal" method="post" action="{% url 'sellerindex' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="maindiv">
+            <h1>ADD PRODUCTS BY SELLER</h1>
+            <hr>
+            <div class="div1">
+                <label for="seller_name">SELLER NAME :</label>
+                <input type="text" name="seller_name" id="seller_name" placeholder="Seller Name">
+            </div>
+
+
+            <div class="div2">
+                <label for="product_name">PRODUCT NAME :</label>
+                <input type="text" name="product_name" id="product_name" placeholder="Product Name">
+            </div>
+
+            <div class="div3">
+                <label for="">PRODUCT DESCRIPTION :</label>
+                <input type="text" name="description" id="description" placeholder="Product Description">
+            </div>
+
+            <div class="div4">
+                <label for="">AVAILABLE QUANTITY :</label>
+                <input type="text" name="available_quantity" id="available_quantity" placeholder="Avalible Quantity">
+            </div>
+
+            <div class="div5">
+                <label for="">DISCOUNT :</label>
+                <input type="text" name="percentage_discount" id="percentage_discount" placeholder="Discount">
+            </div>
+
+            <div class="div6">
+                <label for="">PRICE :</label>
+                <input type="text" name="PRICE" id="PRICE" placeholder="PRICE">
+            </div>
+
+            <div class="div7">
+                <label for="">Image :</label>
+                <input type="file" name="Main_Image" id="Main_Image" placeholder="Image">
+            </div>
+
+            <div class="div8">
+                <button id="button" name="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{% static '\product\css\sellercss\seller.css' %}">
+
+<body>
+
+    <form class="form-horizontal" method="post" action="{% url 'addproduct' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+            <legend>ADD PRODUCTS BY SELLER</legend>
+
+            <div class="form-group" >
+                <label class="col-md-4 control-label" for="seller_name">SELLER NAME</label>
+                <div class="col-md-4">
+                    <input id="seller_name" name="seller_name" placeholder="SELLER NAME"
+                        class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <div class="form-group" >
+                <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>
+                <div class="col-md-4">
+                    <input id="product_name" name="product_name" placeholder="PRODUCT NAME"
+                        class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="product_name_fr">PRODUCT DESCRIPTION</label>
+                <div class="col-md-4">
+                    <input id="product_name_fr" name="description" placeholder="PRODUCT DESCRIPTION"
+                        class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="available_quantity">AVAILABLE QUANTITY</label>
+                <div class="col-md-4">
+                    <input id="available_quantity" name="available_quantity" placeholder="AVAILABLE QUANTITY"
+                        class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="percentage_discount">DISCOUNT</label>
+                <div class="col-md-4">
+                    <input id="percentage_discount" name="percentage_discount" placeholder="PERCENTAGE DISCOUNT"
+                        class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Price">PRICE</label>
+                <div class="col-md-4">
+                    <input id="stock_alert" name="PRICE" placeholder="PRICE" class="form-control input-md" required=""
+                        type="text">
+
+                </div>
+            </div>
+
+            
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="filebutton">Main_Image</label>
+                <div class="col-md-4">
+                    <input id="filebutton" name="Main_Image" class="input-file" type="file">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html> -->
