@@ -58,13 +58,37 @@
 </head>
 <body>
 	<div class="card">
-	<h1 class="title">Buy Me a Chai </h1>
+	<h1 class="title">Pay Now!!!!</h1>
 	<small class="muted"
-		>If you like my work, you can support me by donating ₹200</small
-	>
+		>Cart Products : </small>
+		<table class="timetable_sub">
+            <thead>
+                <tr>
+                    <th>Quantity</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_object %}
+
+                <tr class="rem1">
+                    <td class="invert">{{item.quantity}}</td>
+                    <td class="invert">{{item.product.product_name}}</td>
+                    <td class="invert">₹{{item.product.discounted_price}}</td>
+                </tr>
+                
+                {% endfor %}
+               
+            </tbody>
+        </table>
+
+        <br><br><br>
+        <b>Total Amount is: {{total_price}}</b>
+
 	<div class="btn_container">
 		<!-- Payment Button -->
-		<button class="btn" id="pay-btn">Donate</button>
+		<button class="btn" id="pay-btn">Pay Now</button>
 	</div>
 	</div>
 </body>
@@ -84,7 +108,7 @@
 	currency: "{{ currency }}",
 	
 	// Your/store name.
-	name: "Dj Razorpay",
+	name: "MultiShop",
 	
 	// Pass the `id` obtained in the response of Step 1
 	order_id: "{{ razorpay_order_id }}",

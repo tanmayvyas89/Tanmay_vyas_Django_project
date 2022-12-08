@@ -186,10 +186,19 @@ def delcart(request, pk):
 
 
 def checkout(request):
-    if request.method=='GET':
+    if request.method=='GET':  
+        userobj = User.objects.get(Email=request.session['email'])
+        cart_object=Cart.objects.filter(user=userobj)
+        total_price = 0
+        for item in cart_object:
+            total_price += item.product.discounted_price * item.quantity
+
+
+
+
         currency = 'INR'
         global amount
-        amount =  final_total * 100 # Rs. 200
+        amount =  total_price * 100 # Rs. 200
     
         # Create a Razorpay Order
         razorpay_order = razorpay_client.order.create(dict(amount=amount,
@@ -207,6 +216,8 @@ def checkout(request):
         context['razorpay_amount'] = amount
         context['currency'] = currency
         context['callback_url'] = callback_url
+        context['cart_object']= cart_object
+        context['total_price']=total_price
     
         return render(request,'checkout.html', context=context)
 
@@ -242,10 +253,17 @@ def paymenthandler(request):
                 # capture the payemt
                 razorpay_client.payment.capture(payment_id, amount)
 
+                global user_data
+                user_data = User.objects.get(Email=request.session['email'])
+                global cartdata
+                cartdata = Cart.objects.filter(user=user_data)
+                
+                for i in cartdata:
+                    i.delete()
                 # render success page on successful caputre of payment
                 return render(request, 'paymentsuccess.html')
             except:
-
+                
                 # if there is an error while capturing payment.
                 return render(request, 'paymentfail.html')
     # else:
