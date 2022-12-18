@@ -101,7 +101,7 @@ def otp(request):
                 return redirect('index')
                 # return render(request, 'register.html', {'msg': 'Successfully registered!!'})
             except:
-                return redirect('index')
+                return redirect('login')
 
         else:
             return render(request, 'otp.html', {'msg': 'invalid OTP'})
