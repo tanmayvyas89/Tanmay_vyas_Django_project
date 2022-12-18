@@ -20,10 +20,9 @@ def sellerlogin(request):
 def addproduct(request):
     sellerobj = Seller.objects.get(Email=request.session['Email'])
     if request.method == "POST":
-        oroiginal_price = int(request.POST['PRICE']) 
+        original_price = int(request.POST['PRICE']) 
         discount = int(request.POST['percentage_discount'])
-        
-        discounted_price = oroiginal_price - (oroiginal_price * (discount / 100))
+        discounted_price = original_price - (original_price * (discount / 100))
         Product.objects.create(
             seller=sellerobj,
             product_name=request.POST['product_name'],
@@ -51,7 +50,7 @@ def editproduct(request, pid):
     productobj = Product.objects.get(id=pid)
     if request.method == 'POST':
         if 'pic' in request.FILES:
-            productobj.name = request.POST['product_name']
+            productobj.product_name = request.POST['product_name']
             productobj.des = request.POST['description']
             productobj.price = request.POST['PRICE']
             productobj.discount = request.POST['percentage_discount']
@@ -60,7 +59,7 @@ def editproduct(request, pid):
             productobj.save()
             return redirect('manageproduct')
         else:
-            productobj.name = request.POST['product_name']
+            productobj.product_name = request.POST['product_name']
             productobj.des = request.POST['description']
             productobj.price = request.POST['PRICE']
             productobj.discount = request.POST['percentage_discount']

@@ -98,7 +98,7 @@ def otp(request):
                 )
                 del product_add_w_l
                 del user_data
-                return redirect('index')
+                return redirect('login')
                 # return render(request, 'register.html', {'msg': 'Successfully registered!!'})
             except:
                 return redirect('login')
